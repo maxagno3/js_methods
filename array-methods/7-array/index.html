@@ -11,35 +11,75 @@
     <script>
       function countAllPeople() {
         // your code goes here
+        let newArr = got.houses.reduce((acc, cv) => {
+          acc += cv.people.length;
+          return acc;
+        }, 0)
         console.log(got);
+        return newArr;
       }
 
       function peopleByHouses() {
         // your code goes here
+        let people = got.houses.reduce((acc, cv) => {
+          acc[cv.name] = cv.name.length;
+          return acc;
+        }, {});
+        return people;
       }
 
       function everyone() {
         // your code goes here
+        let everyOne = got.houses.reduce((acc, cv) => {
+          acc += cv.people.map(el => el.name)
+          return acc;
+        }, [])
+        return everyOne;
       }
 
       function nameWithS() {
         // your code goes here
+        let nameWith = got.houses.reduce((acc, cv) => {
+          acc.push(cv.people.map(el => el.name).filter(ele => ele.includes('s') || ele.includes('S')))
+          return acc.flat();
+        }, [])
+        return nameWith;
       }
 
       function nameWithA() {
         // your code goes here
+        let nameA = got.houses.reduce((acc, cv) => {
+          acc.push(cv.people.map(el => el.name).filter(ele => ele.includes('a') || ele.includes('A')))
+          return acc.flat()
+        }, [])
+        return nameA;
       }
 
       function surnameWithS() {
         // your code goes here
+        let surname = got.houses.reduce((acc, cv) => {
+          acc.push(cv.people.map(el => el.name.split(' ')).filter(ele => ele[1].includes('S')));
+          return acc.flat();
+        }, [])
+        return surname;
       }
 
       function surnameWithA() {
         // your code goes here
+        let surnameA = got.houses.reduce((acc, cv) => {
+          acc.push(cv.people.map(el => el.name.split(' ')).filter(ele => ele[1].includes('A')));
+          return acc.flat();
+        }, [])
+        return surnameA;
       }
 
       function peopleNameOfAllHouses() {
         // your code goes here
+        let nameHouses = got.houses.reduce((acc, cv) => {
+          acc[cv.name] += cv.people.map(el => el.name);
+          return acc;
+        }, {})
+        return nameHouses;
       }
 
       // Testing your result after writing your function
