@@ -15,6 +15,14 @@ var words = [
 // Write a function uniqueArray that receives an array of words as a parameter. And remove the duplicates, and return a new array. 
 // (indexOf)
 
+let uniqueArray = words.reduce(function (acc, cv) {
+  if (acc.indexOf(cv) === -1) {
+    acc.push(cv);
+  }
+  return acc;
+}, [])
+
+console.log(uniqueArray);
 
 
 var words2 = [
@@ -30,7 +38,9 @@ var words2 = [
 
 // Write a function doesWordExist that will take in an array of words as one argument, and a word to search for as the other. Return true if it exists, otherwise, return false. Don't use indexOf for this one.
 
-
+function doesWordExist(words2, wordToSearch){
+  return (words2.includes(wordToSearch));
+}
 
 
 var words3 = [
@@ -50,7 +60,9 @@ var words3 = [
 
 // Write a function howManyTimes that will take in an array of words as one argument, and a word to search for as the other. The function will return the number of times that word appears in the array.
 
-
+function howManyTimes(words3, searchWord){
+  return (words3.filter(search => search === searchWord).length)
+}
 
 
 
@@ -74,6 +86,15 @@ let data = [
   }
 ]
 
+function totalPopulation(data){
+  return data.reduce((acc, cv) => {
+    if(cv.country !== 'China'){
+      acc(cv) += cv.pop;
+    }
+  return acc;
+  },0)
+}
+
 
 // Use reduce method and summorize the collection like
 // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
@@ -91,7 +112,16 @@ const fruitBasket = [
   'fig'
 ];
 
-
+function collection(fruitBasket){
+  return fruitBasket.reduce((acc, cv) => {
+      if(acc[cv] === 1){
+        acc[cv]++
+      }else{
+        acc[cv] = 1;
+      }
+    return acc;
+  },[])
+}
 
 // Bonus Question (Solve only if you have time)
 var matrix = [
